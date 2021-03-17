@@ -106,6 +106,10 @@ class FinalSimulation extends Simulation {
   )
     .protocols(httpConf)
     .maxDuration(testDuration.seconds)
+      .assertions(
+        global.responseTime.max.lt(2 milliseconds),
+        global.successfulRequests.percent.gt(99)
+      )
 
   /*** After ***/
   after {
